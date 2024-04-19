@@ -22,7 +22,7 @@ export const parseInputArgs = (args: Record<string, any>): ParsedOpenAIArguments
     temperature: args.temperature,
     top_p: args.top_p,
     user: args.user,
-    response_format: args.response_format,
+    response_format: args.response_format?.type,
     top_logprobs: args.top_logprobs,
   };
 
