@@ -19,7 +19,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "yarn && yarn compile",
+    "build": "yarn compile",
     "clean:build": "git clean -fdx -e node_modules -e .env && rm -rf node_modules && yarn install && yarn build",
     "lint": "eslint -c .eslintrc.cjs --fix langfuse*",
     "prettier": "prettier --write \"./**/*.{ts,tsx}\"",
@@ -38,7 +38,7 @@
     "test:examples": "jest integration-test/langfuse-integration-examples*",
     "compile": "rollup -c --bundleConfigAsCjs",
     "docs": "yarn build && typedoc --options ./typedoc.config.cjs",
-    "prepublish": "yarn clean:build"
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
