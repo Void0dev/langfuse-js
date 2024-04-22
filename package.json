@@ -40,7 +40,7 @@
     "docs": "npm run build && typedoc --options ./typedoc.config.cjs",
     "prepublish": "npm run build"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
