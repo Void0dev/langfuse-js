@@ -19,12 +19,12 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "yarn compile",
-    "clean:build": "git clean -fdx -e node_modules -e .env && rm -rf node_modules && yarn install && yarn build",
+    "build": "npm run compile",
+    "clean:build": "git clean -fdx -e node_modules -e .env && rm -rf node_modules && npm install && npm run build",
     "lint": "eslint -c .eslintrc.cjs --fix langfuse*",
     "prettier": "prettier --write \"./**/*.{ts,tsx}\"",
     "prettier:check": "prettier --check \"./**/*.{ts,tsx}\"",
-    "generateAPI": "openapi-typescript langfuse-core/openapi-spec/openapi-server.yaml --output langfuse-core/src/openapi/server.ts && openapi-typescript langfuse-core/openapi-spec/openapi-client.yaml --output langfuse-core/src/openapi/client.ts && yarn prettier",
+    "generateAPI": "openapi-typescript langfuse-core/openapi-spec/openapi-server.yaml --output langfuse-core/src/openapi/server.ts && openapi-typescript langfuse-core/openapi-spec/openapi-client.yaml --output langfuse-core/src/openapi/client.ts && npm run prettier",
     "test": "dotenv -- jest langfuse-core/* langfuse-node/* langfuse/*",
     "test:watch": "jest langfuse-core/* langfuse-node/* langfuse/* --watch --runInBand",
     "test:all": "jest langfuse-core/* langfuse-node/* langfuse/*",
@@ -37,8 +37,8 @@
     "test:modules": "jest integration-test/langfuse-integration-modules*",
     "test:examples": "jest integration-test/langfuse-integration-examples*",
     "compile": "rollup -c --bundleConfigAsCjs",
-    "docs": "yarn build && typedoc --options ./typedoc.config.cjs",
-    "prepublish": "yarn build"
+    "docs": "npm run build && typedoc --options ./typedoc.config.cjs",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
