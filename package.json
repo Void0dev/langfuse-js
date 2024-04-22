@@ -37,10 +37,9 @@
     "test:modules": "jest integration-test/langfuse-integration-modules*",
     "test:examples": "jest integration-test/langfuse-integration-examples*",
     "compile": "rollup -c --bundleConfigAsCjs",
-    "docs": "npm run build && typedoc --options ./typedoc.config.cjs",
-    "prepublish": "npm run build"
+    "docs": "npm run build && typedoc --options ./typedoc.config.cjs"
   },
-  "dependencies": {
+  "devDependencies": {
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
