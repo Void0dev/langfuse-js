@@ -37,7 +37,8 @@
     "test:modules": "jest integration-test/langfuse-integration-modules*",
     "test:examples": "jest integration-test/langfuse-integration-examples*",
     "compile": "rollup -c --bundleConfigAsCjs",
-    "docs": "yarn build && typedoc --options ./typedoc.config.cjs"
+    "docs": "yarn build && typedoc --options ./typedoc.config.cjs",
+    "prepublish": "yarn clean:build"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
