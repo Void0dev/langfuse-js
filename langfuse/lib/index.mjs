@@ -1,4 +1,3 @@
-import { parse, stringify } from 'flatted';
 import { LangfuseCore, utils, LangfuseWebStateless } from 'langfuse-core';
 
 var version = "3.7.0";
@@ -176,20 +175,20 @@ class Langfuse extends LangfuseCore {
   }
   getPersistedProperty(key) {
     if (!this._storageCache) {
-      this._storageCache = parse(this._storage.getItem(this._storageKey) || "{}") || {};
+      this._storageCache = JSON.parse(this._storage.getItem(this._storageKey) || "{}") || {};
     }
     return this._storageCache[key];
   }
   setPersistedProperty(key, value) {
     if (!this._storageCache) {
-      this._storageCache = parse(this._storage.getItem(this._storageKey) || "{}") || {};
+      this._storageCache = JSON.parse(this._storage.getItem(this._storageKey) || "{}") || {};
     }
     if (value === null) {
       delete this._storageCache[key];
     } else {
       this._storageCache[key] = value;
     }
-    this._storage.setItem(this._storageKey, stringify(this._storageCache));
+    this._storage.setItem(this._storageKey, JSON.stringify(this._storageCache));
   }
   fetch(url, options) {
     return fetch(url, options);
@@ -227,20 +226,20 @@ class LangfuseWeb extends LangfuseWebStateless {
   }
   getPersistedProperty(key) {
     if (!this._storageCache) {
-      this._storageCache = parse(this._storage.getItem(this._storageKey) || "{}") || {};
+      this._storageCache = JSON.parse(this._storage.getItem(this._storageKey) || "{}") || {};
     }
     return this._storageCache[key];
   }
   setPersistedProperty(key, value) {
     if (!this._storageCache) {
-      this._storageCache = parse(this._storage.getItem(this._storageKey) || "{}") || {};
+      this._storageCache = JSON.parse(this._storage.getItem(this._storageKey) || "{}") || {};
     }
     if (value === null) {
       delete this._storageCache[key];
     } else {
       this._storageCache[key] = value;
     }
-    this._storage.setItem(this._storageKey, stringify(this._storageCache));
+    this._storage.setItem(this._storageKey, JSON.stringify(this._storageCache));
   }
   fetch(url, options) {
     return fetch(url, options);

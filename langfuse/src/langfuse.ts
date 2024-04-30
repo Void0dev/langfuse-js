@@ -1,4 +1,3 @@
-import { parse, stringify } from 'flatted';
 import {
     LangfuseCore,
     type LangfuseFetchOptions,
@@ -43,7 +42,7 @@ export class Langfuse extends LangfuseCore {
 
     getPersistedProperty<T>(key: LangfusePersistedProperty): T | undefined {
         if (!this._storageCache) {
-            this._storageCache = parse(this._storage.getItem(this._storageKey) || "{}") || {};
+            this._storageCache = JSON.parse(this._storage.getItem(this._storageKey) || "{}") || {};
         }
 
         return this._storageCache[key];
@@ -51,7 +50,7 @@ export class Langfuse extends LangfuseCore {
 
     setPersistedProperty<T>(key: LangfusePersistedProperty, value: T | null): void {
         if (!this._storageCache) {
-            this._storageCache = parse(this._storage.getItem(this._storageKey) || "{}") || {};
+            this._storageCache = JSON.parse(this._storage.getItem(this._storageKey) || "{}") || {};
         }
 
         if (value === null) {
@@ -60,7 +59,7 @@ export class Langfuse extends LangfuseCore {
             this._storageCache[key] = value;
         }
 
-        this._storage.setItem(this._storageKey, stringify(this._storageCache));
+        this._storage.setItem(this._storageKey, JSON.stringify(this._storageCache));
     }
 
     fetch(url: string, options: LangfuseFetchOptions): Promise<LangfuseFetchResponse> {
@@ -104,7 +103,7 @@ export class LangfuseWeb extends LangfuseWebStateless {
 
     getPersistedProperty<T>(key: LangfusePersistedProperty): T | undefined {
         if (!this._storageCache) {
-            this._storageCache = parse(this._storage.getItem(this._storageKey) || "{}") || {};
+            this._storageCache = JSON.parse(this._storage.getItem(this._storageKey) || "{}") || {};
         }
 
         return this._storageCache[key];
@@ -112,7 +111,7 @@ export class LangfuseWeb extends LangfuseWebStateless {
 
     setPersistedProperty<T>(key: LangfusePersistedProperty, value: T | null): void {
         if (!this._storageCache) {
-            this._storageCache = parse(this._storage.getItem(this._storageKey) || "{}") || {};
+            this._storageCache = JSON.parse(this._storage.getItem(this._storageKey) || "{}") || {};
         }
 
         if (value === null) {
@@ -121,7 +120,7 @@ export class LangfuseWeb extends LangfuseWebStateless {
             this._storageCache[key] = value;
         }
 
-        this._storage.setItem(this._storageKey, stringify(this._storageCache));
+        this._storage.setItem(this._storageKey, JSON.stringify(this._storageCache));
     }
 
     fetch(url: string, options: LangfuseFetchOptions): Promise<LangfuseFetchResponse> {
