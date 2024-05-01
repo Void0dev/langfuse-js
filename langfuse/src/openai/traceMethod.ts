@@ -33,6 +33,8 @@ const wrapMethod = async <T extends GenericMethod>(
 
   if (hasUserProvidedParent) {
     langfuseParent = config.parent;
+    // @ts-expect-error
+    delete config.parent;
     observationData = { ...config, ...observationData };
   } else {
     const langfuse = LangfuseSingleton.getInstance(config?.clientInitParams);
